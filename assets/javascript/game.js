@@ -4,16 +4,31 @@
 
  $(document).ready(function() {
 
-var sora = {};
-var cloud = {};
-var mickey = {};
-var sephiroth = {};
+var defaultCharacters = [sora, cloud, mickey, sephiroth];
+var sora = $('#sora');
+var cloud = $('#cloud');
+var mickey = $('#mickey');
+var sephiroth = $('#sephiroth');
 var yourCharacter;
-var enemies-available = [];
-var enemy-defender;
+var enemiesAvailable = [];
+var enemyDefender;
+var characterClicked = false;
 
 
-$('document').on('click', function() {
+
+
+$('.characters').on('click', function() {
+
+	console.log('click event');
+	characterClicked = true;
+	
+//once a character is clicked, it should relocate to the 
+//player charater class, else should go to enemies class
+	if (characterClicked) {
+		$('.characters').clone().appendTo('.enemies');
+		} else {
+			console.log('do something with your life')
+		}
 
 })
 
@@ -27,5 +42,5 @@ $('document').on('click', function() {
 
 
 
- }
+ })
 
