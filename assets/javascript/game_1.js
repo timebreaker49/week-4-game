@@ -19,6 +19,8 @@ var enemyDefender = '';
 //I forget what I wanted to use this for...
 var characterClicked = false;
 
+var enemyId = -1;
+
 console.log(defaultCharacters);
 
 // $('.characters').on('click', function() {
@@ -48,14 +50,32 @@ console.log(defaultCharacters);
 
 
 //basic way of selecting the character and moving the rest of the values
-$('#sora').on('click', function() {
-	characterClicked = true;
-	yourCharacter = this.value;
-	$('#enemies').append(cloud, mickey, sephiroth);
-	enemiesAvailable.push(cloud, mickey, sephiroth);
-	return enemiesAvailable;
-	});
+$('#fighters').on('click', function(event) {
+	// characterClicked = true;
+	var id = event.target.id;
+	for (var i=defaultCharacters.length-1; i>=0; i--) {
+    	if (defaultCharacters[i] === sora) {
+    		yourCharacter = i;
+        	defaultCharacters.splice(i, 1);
+        	// break;       //<-- Uncomment  if only the first term has to be removed
+    	}
+    	// if (defaultCharacters[i] === cloud) {
+    	// 	yourCharacter = i;
+     //    	defaultCharacters.splice(i, 1);
+     //    	// break;       //<-- Uncomment  if only the first term has to be removed
+    	// }
+	}
+	enemiesAvailable = defaultCharacters.slice();
 	console.log(enemiesAvailable);
+	// yourCharacter = sora.value;
+	$('#enemies').append(enemiesAvailable);
+	// enemiesAvailable.push(cloud, mickey, sephiroth);
+	});
+	
+	console.log(enemiesAvailable);
+	
+	
+
 
 // $('#cloud').on('click', function() {
 // 	characterClicked = true;
@@ -84,11 +104,25 @@ $('#sora').on('click', function() {
 // 	console.log(enemiesAvailable);
 // 	});
 
-$('#enemies').on('click', function () {
+$('#enemies').on('click', function(event) {
 
 	console.log(enemiesAvailable);
-	var enemyDefender = this.value;
-	console.log(enemyDefender);
+	enemyId = event.target.id;
+	var enemy = setEnemy(enemyId);
+	for (var i=enemiesAvailable.length-1; i>=0; i--) {
+    	if (enemiesAvailable[i] === enemy) {
+    		// enemyDefender = i;
+        	enemiesAvailable.splice(i, 1);
+
+			$('#defender').empty();
+        	$('#defender').append(enemy);
+        	$('#enemies').append(enemiesAvailable);
+
+        	console.log(enemy);
+        	console.log(enemiesAvailable);
+        	// break;       //<-- Uncomment  if only the first term has to be removed
+    	}
+	}
 
 	// for (var i = 0; i < enemiesAvailable.length; i++) {
 	// 	enemiesAvailable[i]
@@ -96,6 +130,28 @@ $('#enemies').on('click', function () {
 	// enemyDefender = this.value;
 
 });
+
+function setEnemy(enemyId) {
+	var enemy;
+	switch(enemyId) {
+		case 'sora':
+			enemy = sora;
+			break;
+		case 'cloud':
+			enemy = cloud;
+			break;
+		case 'mickey':
+			enemy = mickey;
+			break;
+		case 'sephiroth':
+			enemy = sephiroth;
+			break;
+		default:
+			console.log(enemyId);
+	}
+	return enemy;
+
+}
 
 
 });
