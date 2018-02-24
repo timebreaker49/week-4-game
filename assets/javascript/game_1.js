@@ -7,33 +7,41 @@ $(document).ready(function() {
     //character objects
     var sora = {
         name: "sora",
-        hp: 80,
+        hp: 160,
         defense: 16,
         attack: 12,
+        baseAttackPower: 12,
+        counterAttackPower : 14,
         id: $('#sora'),
         src: "assets/images/Sora-kh.png"
     };
     var cloud = {
         name: "cloud",
-        hp: 90,
+        hp: 150,
         defense: 13,
         attack: 15,
+        baseAttackPower: 15,
+        counterAttackPower : 15,
         id: $('#sora'),
         src: "assets/images/cloud-kh.png"
     };
     var mickey = {
         name: "mickey",
-        hp: 100,
+        hp: 170,
         defense: 13,
         attack: 11,
+        baseAttackPower: 11,
+        counterAttackPower : 13,
         id: $('#mickey'),
         src: "assets/images/mickey.png"
     };
     var sephiroth = {
         name: "sephiroth",
-        hp: 110,
+        hp: 185,
         defense: 12,
         attack: 16,
+        baseAttackPower: 16,
+        counterAttackPower : 16,
         id: $('#sephiroth'),
         src: "assets/images/sephiroth_kh.png"
     };
@@ -190,31 +198,47 @@ $(document).ready(function() {
 
     $('#attack-button').on('click', function(event) {
 
-    		console.log(yourCharacter[0].hp);
-    		console.log(enemyDefender[0].hp);
+    		// console.log(yourCharacter[0].hp);
+    		// console.log(enemyDefender[0].hp);
 
-    		yourCharacter[0].hp -= enemyDefender[0].attack;
+    		yourCharacter[0].hp -= enemyDefender[0].counterAttackPower;
+            yourCharacter[0].attack += yourCharacter[0].baseAttackPower;
+            // console.log(yourCharacter[0].attack);
     		enemyDefender[0].hp -= yourCharacter[0].attack;
 
-    		console.log(yourCharacter[0].hp);
-    		console.log(enemyDefender[0].hp);
+    		// console.log(yourCharacter[0].hp);
+    		// console.log(enemyDefender[0].hp);
 
-    	function deadEnemy() {
+    	function enemyDefeated() {
     		if (enemyDefender[0].hp <= 0) {
     			alert('One step closer to the kingdom');
+
+            //if there are enemies left in the array, 'choose another foe' will alert
+                if (enemiesAvailable.length != 0) {
+                    alert('Choose another foe!');    
+                }
+            //empties the defender array and the defender div
     			enemyDefender = [];
     			$('#defender').empty();
-    			yourCharacter[0].attack += 70;
+    			// yourCharacter[0].attack += 70;
     			console.log(yourCharacter[0].attack);
-
+            //checks the length of the array and if empty, alerts that you've defeated everything
     			if (enemiesAvailable === undefined || enemiesAvailable.length == 0) {
     				alert('You defeated all the baddies');
+
+                    if(confirm('Play again?')) {
+                        location.reload(); 
+                    } else {
+                        alert('Thanks for playing!');
+                    };
+
+                    
 				}				
 
     		}
 
     	}
-    	deadEnemy();
+    	enemyDefeated();
 
     	
 
