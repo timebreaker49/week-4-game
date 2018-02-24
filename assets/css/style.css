@@ -15,6 +15,29 @@ body {
 	background-repeat: no-repeat;
 	}
 
+.btn-sm {
+	margin-left: 4px;
+}
+
+.alertify {
+	max-width: 450px;
+}
+
+.alertify-button-ok, .alertify-button-ok:hover, .alertify-button-ok:focus {
+	background-color: #1d18c1;
+	border: 1px solid #000000;
+}
+
+.alertify-inner {
+	color: white;
+	font-size: 18px;
+	font-family: 'Bellefair', serif;
+}
+
+.alertify-dialog {
+	background: dimgray;
+}
+
 h1, h3 {
 	color: white;
 	font-family: 'Bellefair', serif;

@@ -4,6 +4,8 @@
 
 $(document).ready(function() {
 
+    $('#audio')[0].play();
+
     //character objects
     var sora = {
         name: "sora",
@@ -57,7 +59,7 @@ $(document).ready(function() {
     //I forget what I wanted to use this for...
     var characterClicked = false;
 
-    var enemyId = -1;
+    alertify.alert('And so it begins. Choose your character.');
 
     console.log(defaultCharacters);
 
@@ -148,6 +150,8 @@ $(document).ready(function() {
         }
 
         renderYours();
+
+        alertify.alert('Now choose an opponent.')
     });
 
     //on click event for the enemies div
@@ -190,6 +194,8 @@ $(document).ready(function() {
 
         renderFoe();
 
+        alertify.alert('Prepare for battle. Attack!!');
+
     })
 
 
@@ -211,11 +217,11 @@ $(document).ready(function() {
 
     	function enemyDefeated() {
     		if (enemyDefender[0].hp <= 0) {
-    			alert('One step closer to the kingdom');
+    			alertify.alert('One step closer to Kingdom Hearts');
 
             //if there are enemies left in the array, 'choose another foe' will alert
                 if (enemiesAvailable.length != 0) {
-                    alert('Choose another foe!');    
+                    alertify.alert('Here they come! Who will you face?');    
                 }
             //empties the defender array and the defender div
     			enemyDefender = [];
@@ -224,12 +230,12 @@ $(document).ready(function() {
     			console.log(yourCharacter[0].attack);
             //checks the length of the array and if empty, alerts that you've defeated everything
     			if (enemiesAvailable === undefined || enemiesAvailable.length == 0) {
-    				alert('You defeated all the baddies');
+    				alertify.alert('The path to Kingdom Hearts is clear!');
 
                     if(confirm('Play again?')) {
                         location.reload(); 
                     } else {
-                        alert('Thanks for playing!');
+                        alertify.alert('Thanks for playing!');
                     };
 
                     
