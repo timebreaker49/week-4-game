@@ -45,7 +45,7 @@ $(document).ready(function() {
         baseAttackPower: 16,
         counterAttackPower : 16,
         id: $('#sephiroth'),
-        src: "assets/images/sephiroth_kh.png"
+        src: "assets/images/Sephiroth_KH.png"
     };
     // var mickey = $('#mickey');
     // var sephiroth = $('#sephiroth');
@@ -131,7 +131,7 @@ $(document).ready(function() {
                 image2.attr('value', enemiesAvailable[i].name);
                 image2.attr('data-number', i);
                 image2.addClass('characters');
-                $('#enemies').append(image2);
+                $('#enemies').append(image2, enemiesAvailable[i].hp);
             }
         }
 
@@ -246,7 +246,7 @@ $(document).ready(function() {
     	}
     	enemyDefeated();
 
-    	
+
 
     })
     // $('#fighters').append(yourCharacter);
