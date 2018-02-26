@@ -52,7 +52,7 @@
 
 $(document).ready(function() {
 
-//    $('#audio')[0].play();
+   $('#audio')[0].play();
     alertify.alert('And so it begins. Choose your character.');
     renderCharacters();
 });
