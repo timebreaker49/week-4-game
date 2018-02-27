@@ -1,4 +1,4 @@
-//character objects
+ //character objects
     var sora = {
         name: "sora",
         hp: 160,
@@ -65,6 +65,9 @@ $(document).ready(function() {
             image.attr('data-number', i);
             image.addClass('characters');
             $('#fighters').append(image);
+
+    //Couldn't quite figure out a good way to append the character's stats to the right position, ideally name above and hp below the corresponding image.
+            // $('#fighters').append(defaultCharacters[i].name);       
         }
     };
 
@@ -95,7 +98,7 @@ $(document).ready(function() {
                 image2.attr('value', enemiesAvailable[i].name);
                 image2.attr('data-number', i);
                 image2.addClass('characters');
-                $('#enemies').append(image2, enemiesAvailable[i].hp);
+                $('#enemies').append(image2);
             }
         };
 

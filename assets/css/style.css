@@ -49,6 +49,7 @@ h1, h3 {
 
 .characters {
 	height: 100px;
+	color: white;
 	background-color: dimgray;
 	padding: 4px;
 	margin: 5px;
@@ -77,4 +78,8 @@ img {
    display: block; 
    height: 0; 
    clear: both;
+}
+
+.hp {
+	color: white;
 }
